@@ -1,9 +1,11 @@
-root@v11107:/home# ufw status
+root@v11107:~# ufw status
 Status: active
 
 To                         Action      From
 --                         ------      ----
 22/tcp                     ALLOW       Anywhere
 Nginx Full                 ALLOW       Anywhere
+27017                      ALLOW       Anywhere
 22/tcp (v6)                ALLOW       Anywhere (v6)
 Nginx Full (v6)            ALLOW       Anywhere (v6)
+27017 (v6)                 ALLOW       Anywhere (v6)
