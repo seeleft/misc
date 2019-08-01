@@ -1,23 +1,23 @@
 server {
 
-        # static files root directory
-        root /var/www/html;
+    # static files root directory
+    root /var/www/html;
 
-        # static files index
-        index index.html;
+    # static files index
+    index index.html;
 
-        # hostnames
-        server_name seeleft.de www.seeleft.de;
+    # hostnames
+    server_name seeleft.de www.seeleft.de;
 
-        # serve static files on root path
-        location / {
-            try_files $uri $uri/ =404;
-        }
+    # serve static files on root path
+    location / {
+        try_files $uri $uri/ =404;
+    }
 
-        # serve redirector service
-        location /go/ {
-            proxy_pass http://127.0.0.1:5000/;
-        }
+    # serve redirector service
+    location /go/ {
+        proxy_pass http://127.0.0.1:5000/;
+    }
 
     listen 80; # managed by Certbot
 
