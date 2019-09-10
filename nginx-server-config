@@ -7,21 +7,22 @@ server {
     index index.html index.php;
 
     # hostnames
-    server_name seeleft.de www.seeleft.de;
+    server_name seeleft.de *.seeleft.de;
 
     # allow large file uploads
     client_max_body_size 1G;
 
+    # serve static files on root path
+    location / {
+        try_files $uri $uri/ =404;
+        autoindex on;
+    }
+    
     # passthrough php
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
         fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
     } 
-
-    # serve static files on root path
-    location / {
-        try_files $uri $uri/ =404;
-    }
 
     # serve redirector service
     location /go/ {
