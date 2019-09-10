@@ -3,9 +3,23 @@ Status: active
 
 To                         Action      From
 --                         ------      ----
-22/tcp                     ALLOW       Anywhere
-Nginx Full                 ALLOW       Anywhere
-27017                      ALLOW       Anywhere
-22/tcp (v6)                ALLOW       Anywhere (v6)
-Nginx Full (v6)            ALLOW       Anywhere (v6)
-27017 (v6)                 ALLOW       Anywhere (v6)
+22/tcp                     ALLOW       Anywhere                  
+Nginx Full                 ALLOW       Anywhere                  
+27017                      ALLOW       Anywhere                  
+8050                       DENY        Anywhere                  
+990/tcp                    ALLOW       Anywhere                  
+21/tcp                     ALLOW       Anywhere                  
+20/tcp                     ALLOW       Anywhere                  
+40000:50000/tcp            ALLOW       Anywhere                  
+900/tcp                    ALLOW       Anywhere                  
+OpenSSH                    ALLOW       Anywhere                  
+22/tcp (v6)                ALLOW       Anywhere (v6)             
+Nginx Full (v6)            ALLOW       Anywhere (v6)             
+27017 (v6)                 ALLOW       Anywhere (v6)             
+8050 (v6)                  DENY        Anywhere (v6)             
+990/tcp (v6)               ALLOW       Anywhere (v6)             
+21/tcp (v6)                ALLOW       Anywhere (v6)             
+20/tcp (v6)                ALLOW       Anywhere (v6)             
+40000:50000/tcp (v6)       ALLOW       Anywhere (v6)             
+900/tcp (v6)               ALLOW       Anywhere (v6)             
+OpenSSH (v6)               ALLOW       Anywhere (v6) 
