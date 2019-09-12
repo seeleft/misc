@@ -14,19 +14,30 @@ server {
 
     # serve static files on root path
     location / {
-        try_files $uri $uri/ =404;
+        try_files $uri $uri/ @plesk;
         autoindex on;
     }
-    
+
+    # fordward to plesk webspace (wordpress installation)
+    location @plesk {
+        proxy_pass http://5.9.8.209$request_uri;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
     # passthrough php
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
         fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
-    } 
+    }
 
     # serve redirector service
     location /go/ {
         proxy_pass http://127.0.0.1:5000/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 
     # serve sonatype nexus server
@@ -36,7 +47,7 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
-
+    
     listen 80; # managed by Certbot
 
     listen 443 ssl; # managed by Certbot
